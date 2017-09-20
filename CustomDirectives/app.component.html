@@ -1,0 +1,20 @@
+Create a Component that accepts an array of strings as input and it will display all array items as an unordered-list.
+<app-string-list [stringItems]="listOfStrings">
+
+</app-string-list>
+<hr /> Create a custom Directive called "upper" that once applied to an element like  &lt;li&gt; it's going to convert the content
+of the element to uppercase.
+<app-upper>
+    <li>abc</li>
+    <input type="button" value="Hello" />
+    <div>this is test div.</div>
+</app-upper>
+<hr /> Create a custom Directive called "mycolor" when clicked it will change its color from an array of colors and emit the color
+value to parent component to show the value of the current selected color of the clicked component.
+<div mycolor (colorValueEmitter)="showColorChange($event)">
+    My Color Testing. Color: {{colorChange}}
+</div>
+<hr /> Create a custom Directive called "myvisibility" that accepts a boolean input which is going to show or hide the element.
+<br />
+<input type="checkbox" value="visibility" [(ngModel)]="visibility" /> visibility
+<div myvisibility show="{{visibility}}"> Test myvisibility </div>
