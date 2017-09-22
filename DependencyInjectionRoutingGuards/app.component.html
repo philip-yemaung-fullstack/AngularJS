@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-10">
+            <h1>DependencyInjection, Routing, Guards</h1>
+            <hr>
+             <!-- 
+            without exact:true it will be added to all routes as they all start with / 
+            <a [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
+            -->
+            <a [routerLink]="['']">Home</a> |
+            <a [routerLink]="['students']">Students</a>
+            <hr>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
