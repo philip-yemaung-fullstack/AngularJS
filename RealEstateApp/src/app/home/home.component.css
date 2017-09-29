@@ -1,0 +1,11 @@
+a {
+  cursor: pointer;
+}
+
+.small_text {
+  width: 50px;
+}
+
+.large_text {
+  width: 150px;
+}

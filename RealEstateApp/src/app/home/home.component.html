@@ -1,0 +1,45 @@
+<div *ngIf="auth.isAuthenticated()">
+  <!-- You are logged in! Welcome onboard --><strong><label #email></label></strong>
+  <div *ngIf="auth.isAdminLogin()">
+    <a [routerLink]="['administration']">Add New Record</a>
+  </div>
+  <br /> BathRooms: <input type="text" #bathRooms (keyup)="0" class="small_text" /> Bedrooms: <input type="text" #bedRooms
+    (keyup)="0" class="small_text" /> Address: <input type="text" #address (keyup)="0" class="large_text" /> Type: <input type="text"
+    #type (keyup)="0" class="large_text" /> Built: <input type="text" #built (keyup)="0" class="small_text" />
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Image</th>
+        <th>BathRooms</th>
+        <th>Bedrooms</th>
+        <th>Address</th>
+        <th>Type</th>
+        <th>Built</th>
+        <th *ngIf="auth.isAdminLogin()">
+          Command
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items | myPipe: {bathRooms: bathRooms.value, bedRooms: bedRooms.value,
+      address: address.value, type: type.value, built: built.value}; let num = index">
+        <td>{{item._id}}</td>
+        <td><img *ngIf="item.img != undefined" [src]="item.img" width="200px" height="200px" /></td>
+        <td>{{item.bathRooms}}</td>
+        <td>{{item.bedRooms.length}}</td>
+        <td>{{item.address}}</td>
+        <td>{{item.type}}</td>
+        <td>{{item.built}}</td>
+        <td *ngIf="auth.isAdminLogin()">
+          <!-- <a href="https://realestatesvc.herokuapp.com/remove/{{item._id}}">Delete</a> -->
+          <a routerLink="/remove/{{item._id}}">Delete</a>
+          <a routerLink="/administration/{{item._id}}">Edit</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<h4 *ngIf="!auth.isAuthenticated()">
+  You are not logged in! Please <a (click)="auth.login()">Log In</a> to continue.
+</h4>

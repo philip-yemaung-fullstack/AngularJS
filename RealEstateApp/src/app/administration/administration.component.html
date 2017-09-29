@@ -1,0 +1,62 @@
+<div *ngIf="auth.isAdminLogin()">
+  <button class="btn btn-primary btn-margin" (click)="updateRealEstate()">
+      Save
+  </button>
+  <strong>{{message}}</strong>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Image</td>
+        <td><input type="file" #fileInput placeholder="Upload file..." 
+          name="fileInput" (change)="setFile($event)"/></td>
+      </tr>
+      <tr>
+        <td>Address</td>
+        <td><textarea [(ngModel)]="address" name="address" cols="100" rows="3"></textarea></td>
+      </tr>
+      <tr>
+        <td>BathRooms</td>
+        <td><input [(ngModel)]="bathRooms" name="bathRooms"/></td>
+      </tr>
+      <tr>
+        <td>Type</td>
+        <td><input [(ngModel)]="type" name="type"/></td>
+      </tr>
+      <tr>
+        <td>Built</td>
+        <td><input [(ngModel)]="built" name="built"/></td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td><textarea [(ngModel)]="otherDescription" cols="100" rows="3" 
+          name="otherDescription"></textarea></td>
+      </tr>
+      <tr>
+          <td colspan=2>
+              <fieldset class="gllpLatlonPicker" style='border:0px;'>
+                  Latitude / Longtitude:
+                  <input type="text" class="gllpLatitude" name="latitude" 
+                  [(ngModel)]="latitude" /> /
+                  <input type="text" class="gllpLongitude" name="longitude" 
+                  [(ngModel)]="longitude" />
+                  <input type="submit" value="Update Location" />
+                  <br /> <br />
+                  <div class="gllpMap">Google Maps</div>
+              </fieldset>
+          </td>          
+      </tr>
+    </tbody>
+  </table>  
+  <!-- <script>
+           
+      setTimeout(function() {
+        $obj.setZoom(5);
+      }, 5000);
+  </script> -->
+</div>
